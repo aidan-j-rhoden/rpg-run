@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://2v8yrj8gpwnt"]
+
+[ext_resource type="Script" path="res://weapons/rpg.gd" id="1_cm70s"]
+[ext_resource type="PackedScene" uid="uid://d0frckmwcgg8k" path="res://assets/models/weapons/rpg/rpg.glb" id="1_nic1t"]
+
+[node name="RPG" type="Node3D"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+script = ExtResource("1_cm70s")
+
+[node name="rpg" parent="." instance=ExtResource("1_nic1t")]
+
+[editable path="rpg"]
