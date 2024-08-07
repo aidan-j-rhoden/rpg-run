@@ -21,6 +21,7 @@ var locked:bool = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Engine.time_scale = 0.25
 
 
 func _input(event: InputEvent) -> void:
@@ -28,6 +29,7 @@ func _input(event: InputEvent) -> void:
 		rotate_y(deg_to_rad(-event.relative.x * senstivity_h))
 		visuals.rotate_y(deg_to_rad(event.relative.x * senstivity_h))
 		cam_mount.rotate_x(deg_to_rad(-event.relative.y * senstivity_v))
+
 	if Input.is_action_just_pressed("escape"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

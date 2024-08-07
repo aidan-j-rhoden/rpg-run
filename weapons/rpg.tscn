@@ -1,12 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjhcjf4412dvj"]
+[gd_scene load_steps=3 format=3 uid="uid://bjhcjf4412dvj"]
 
 [ext_resource type="Script" path="res://weapons/rpg.gd" id="1_cm70s"]
 [ext_resource type="PackedScene" uid="uid://bja2s8pgxs223" path="res://assets/models/weapons/rpg/launcher.glb" id="2_x4fw3"]
-[ext_resource type="PackedScene" uid="uid://ds04nuypx3vt6" path="res://weapons/rocket.tscn" id="3_k64cj"]
 
 [node name="RPG" type="Node3D"]
 script = ExtResource("1_cm70s")
 
 [node name="launcher" parent="." instance=ExtResource("2_x4fw3")]
-
-[node name="rocket" parent="launcher" instance=ExtResource("3_k64cj")]
