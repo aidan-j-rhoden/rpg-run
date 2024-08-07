@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d0frckmwcgg8k"
-path="res://.godot/imported/rpg.glb-c738671393e58feab32def5fb9c6473a.scn"
+uid="uid://bja2s8pgxs223"
+path="res://.godot/imported/launcher.glb-3474cdc908ecc866731ae7f9508d48e7.scn"
 
 [deps]
 
-source_file="res://assets/models/weapons/rpg/rpg.glb"
-dest_files=["res://.godot/imported/rpg.glb-c738671393e58feab32def5fb9c6473a.scn"]
+source_file="res://assets/models/weapons/rpg/launcher.glb"
+dest_files=["res://.godot/imported/launcher.glb-3474cdc908ecc866731ae7f9508d48e7.scn"]
 
 [params]
 

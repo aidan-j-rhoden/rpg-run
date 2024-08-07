@@ -6,6 +6,8 @@ extends CharacterBody3D
 
 @onready var visuals: Node3D = $Visuals
 
+@onready var rpg: Node3D = $Visuals/mixamo_base/Armature/Skeleton3D/BoneAttachment3D/RPG
+
 const JUMP_VELOCITY = 4.5
 
 var SPEED = 1.75
@@ -41,6 +43,9 @@ func _physics_process(delta: float) -> void:
 		if not animation_tree["parameters/kick/active"]:
 			locked = true
 			animation_tree["parameters/kick/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	if Input.is_action_just_pressed("shoot"):
+		if not animation_tree["parameters/fire/active"]:
+			animation_tree["parameters/fire/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 	if Input.is_action_pressed("sprint"):
 		SPEED = run_speed
@@ -57,7 +62,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		if not animation_tree["parameters/jump/active"]:
-			animation_tree["parameters/jump/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE 
+			animation_tree["parameters/jump/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -87,3 +92,6 @@ func _physics_process(delta: float) -> void:
 
 	if not locked:
 		move_and_slide()
+
+func fire():
+	rpg.fire()
