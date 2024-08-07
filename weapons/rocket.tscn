@@ -195,11 +195,23 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mdjpd")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oq43u"]
-radius = 0.0604002
+radius = 0.0928025
 height = 0.374477
 
 [sub_resource type="Animation" id="Animation_7liyv"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_vfijy"]
 resource_name = "boosterAction"
@@ -212,6 +224,18 @@ tracks/0/path = NodePath("booster")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -0.166706, 0.0333333, 1, 0, 0, -0.166706, 5, 1, 0, 0, -100)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ayxhq"]
 _data = {
