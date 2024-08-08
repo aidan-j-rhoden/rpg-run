@@ -12,9 +12,10 @@ const JUMP_VELOCITY = 4.5
 
 var SPEED = 1.75
 var walk_speed:float = 1.75
-var run_speed:float = 3.9
-var running:bool = false
-var locked:bool = false
+var run_speed: float = 3.9
+var running: bool = false
+var locked: bool = false
+var aiming: bool = false
 
 @export var senstivity_h:float = 0.3
 @export var senstivity_v:float = 0.3
@@ -27,7 +28,10 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(deg_to_rad(-event.relative.x * senstivity_h))
-		visuals.rotate_y(deg_to_rad(event.relative.x * senstivity_h))
+		if not aiming:
+			visuals.rotate_y(deg_to_rad(event.relative.x * senstivity_h))
+		else:
+			visuals.global_rotation.y = global_rotation.y
 		cam_mount.rotate_x(deg_to_rad(-event.relative.y * senstivity_v))
 
 	if Input.is_action_just_pressed("escape"):
@@ -35,6 +39,11 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	if Input.is_action_pressed("aim"):
+		aiming = true
+	else:
+		aiming = false
 
 
 func _physics_process(delta: float) -> void:

@@ -47,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 				result.collider.add_child(hole)
 				hole.global_position = result.get("position") # $rocket/booster/engine/Cylinder.global_position
 				var normal = result.get("normal")
-				look_at(global_transform.origin + normal, Vector3.UP)
+				look_at(global_transform.origin + normal, Vector3.FORWARD)
 				if normal != Vector3.UP and normal != Vector3.DOWN:
 					self.rotate_object_local(Vector3(1, 0, 0), 90)
 				explode(result.position)
