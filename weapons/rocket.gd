@@ -3,18 +3,18 @@ extends Node3D
 
 @onready var explosion = preload("res://weapons/explosion.tscn")
 @onready var HOLE = preload("res://weapons/hole.tscn")
+@onready var ray_cast_3d: RayCast3D = $rocket/booster/engine/Cylinder/RayCast3D
 
-@export var disabled:bool = true
+@export var exploded:bool = false
 
 func fire() -> void:
-	#$rocket/booster/engine/Area3D.monitoring = true
 	animation_player.play("boosterAction")
 
 
 func explode() -> void:
+	exploded = true
 	animation_player.pause()
 	$rocket.hide()
-	disabled = true
 
 	var efx = explosion.instantiate()
 	add_child(efx)
@@ -27,18 +27,21 @@ func explode() -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if not disabled:
+	if not exploded:
+		print("area hit!")
 		var space_state = get_world_3d().direct_space_state
-		var from = $rocket/booster/engine.global_position
-		var to = $rocket/booster/engine/Cylinder.global_position * 10
-		var query = PhysicsRayQueryParameters3D.create(from, to)
+		var from = $rocket/booster/engine/Cylinder.global_transform.origin
+		var to = from + $rocket/booster/engine/Cylinder.global_position * 2
+		var query = PhysicsRayQueryParameters3D.create(from, to, 0xFFFFFFFF, [self])
 		query.collide_with_bodies = true
 		var result = space_state.intersect_ray(query)
 
 		if result:
+			print("raycast hit!")
+			exploded = true
 			var hole = HOLE.instantiate()
 			body.add_child(hole)
-			hole.global_position = result.get("position")
+			hole.global_position = result.get("position") # $rocket/booster/engine/Cylinder.global_position
 			var normal = result.get("normal")
 			look_at(global_transform.origin + normal, Vector3.UP)
 			if normal != Vector3.UP and normal != Vector3.DOWN:

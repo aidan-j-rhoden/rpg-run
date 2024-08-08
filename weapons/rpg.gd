@@ -11,6 +11,5 @@ func fire() -> void:
 	add_child(rocket)
 	rocket.global_position = global_position
 	rocket.global_rotation = global_rotation
-	rocket.global_scale(Vector3(1, 1, 1))
 	rocket.top_level = true
 	rocket.fire()
