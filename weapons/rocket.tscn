@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://ds04nuypx3vt6"]
+[gd_scene load_steps=15 format=4 uid="uid://ds04nuypx3vt6"]
 
 [ext_resource type="Script" path="res://weapons/rocket.gd" id="1_7w3i8"]
 
@@ -194,9 +194,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mdjpd")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_di6r2"]
-radius = 1.96087
-
 [sub_resource type="Animation" id="Animation_7liyv"]
 length = 0.001
 
@@ -238,16 +235,7 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, -0.260687, 0)
 mesh = SubResource("ArrayMesh_xmyou")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="rocket/booster/engine"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.74925, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rocket/booster/engine/Area3D"]
-shape = SubResource("SphereShape3D_di6r2")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="rocket"]
 libraries = {
 "": SubResource("AnimationLibrary_ayxhq")
 }
-
-[connection signal="body_entered" from="rocket/booster/engine/Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="rocket/booster/engine/Area3D" to="." method="_on_area_3d_body_exited"]
